@@ -4,12 +4,15 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
+import icesi.johann.appmoviles20191.db.DBHandler;
 import icesi.johann.appmoviles20191.model.Amigo;
 
 public class AgregarAmigoActivity extends AppCompatActivity {
@@ -24,6 +27,8 @@ public class AgregarAmigoActivity extends AppCompatActivity {
 
     private Button btn_agregar_amigo;
 
+    DBHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,7 @@ public class AgregarAmigoActivity extends AppCompatActivity {
         et_edad = findViewById(R.id.et_edad);
         et_telefono = findViewById(R.id.et_telefono);
         btn_agregar_amigo = findViewById(R.id.btn_agregar_amigo);
+        db = DBHandler.getInstance(this);
 
         btn_agregar_amigo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +49,12 @@ public class AgregarAmigoActivity extends AppCompatActivity {
                        et_edad.getText().toString(),et_telefono.getText().toString(),
                        et_correo.getText().toString()                                             );
                 //Agregar Amigo a DB local
+                db.createAmigo(amigo);
 
+                ArrayList<Amigo> lista = db.getAllAmigos();
+                for (int i=0; i<lista.size(); i++){
+                    Log.e(">>>", lista.get(i).getNombre());
+                }
             }
         });
     }
