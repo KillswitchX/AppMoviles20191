@@ -4,6 +4,27 @@ public class Amigo {
 
     private String id;
 
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(String id) {
+
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     private String nombre;
 
     private String edad;
