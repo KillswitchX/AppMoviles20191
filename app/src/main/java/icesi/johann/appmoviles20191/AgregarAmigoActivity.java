@@ -53,6 +53,8 @@ public class AgregarAmigoActivity extends AppCompatActivity {
 
                 ArrayList<Amigo> lista = db.getAllAmigos();
                 for (int i=0; i<lista.size(); i++){
+                    //
+                    
                     Log.e(">>>", lista.get(i).getNombre());
                 }
             }
